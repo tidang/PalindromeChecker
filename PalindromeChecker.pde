@@ -13,17 +13,59 @@ public void setup()
       println(lines[i] + " is NOT a palindrome.");
     }
   }
+
 }
 public boolean palindrome(String word)
 {
-  //your code here
+  String newWord = lowerCase(word);
+  String newWord2 = noSpace(newWord);
+  String finalWord = onlyLetters(newWord2);
+  
+  if(finalWord.equals(reverse(word)))
+    return true;
+    else
   return false;
 }
 public String reverse(String str)
 {
-    String sNew = new String();
-    //your code here
+    String sNew = "";
+    String newWord = lowerCase(str);
+    String newWord2 = noSpace(newWord);
+    String finalWord = onlyLetters(newWord2);
+    int last = finalWord.length() - 1;
+    for(int i = last; i >= 0; i--){
+      sNew = sNew + finalWord.substring(i, i + 1);
+    }
     return sNew;
 }
 
+public String lowerCase(String haha){
+ 
+    return haha.toLowerCase();
+}
 
+public String noSpace(String haha){
+ 
+    String noSpace = "";
+  for(int i = 0; i < haha.length(); i++){
+    
+    if(!haha.substring(i, i + 1).equals(" ")){
+      noSpace = noSpace + haha.substring(i, i + 1); 
+    }
+  }
+  return noSpace;
+  
+}
+
+public String onlyLetters(String sString){
+  
+  String letters = "";
+  
+  for(int i = 0; i < sString.length(); i++){
+    
+    if(Character.isLetter(sString.charAt(i))){
+      letters = letters + sString.substring(i, i + 1);
+    }
+  }
+  return letters;
+}
